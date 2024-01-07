@@ -122,6 +122,11 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                                         .primaryBackground,
                                                 fontSize: 24.0,
                                                 fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(FlutterFlowTheme
+                                                            .of(context)
+                                                        .headlineMediumFamily),
                                               ),
                                         ),
                                       ),
@@ -200,9 +205,14 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Nunito Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelLargeFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelLargeFamily),
                                   ),
                               validator: _model.projectNameController1Validator
                                   .asValidator(context),
@@ -264,9 +274,14 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Nunito Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelLargeFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelLargeFamily),
                                   ),
                               validator: _model.projectNameController2Validator
                                   .asValidator(context),
@@ -326,9 +341,14 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Nunito Sans',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelLargeFamily,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelLargeFamily),
                                   ),
                               maxLines: 5,
                               maxLength: 120,
@@ -403,6 +423,10 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                                 .secondaryBackground,
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
                                           ),
                                       elevation: 2.0,
                                       borderSide: BorderSide(

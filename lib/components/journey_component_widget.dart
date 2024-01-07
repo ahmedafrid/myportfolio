@@ -74,6 +74,9 @@ class _JourneyComponentWidgetState extends State<JourneyComponentWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 0.0, 0.0),
       child: Container(
         width: double.infinity,
+        constraints: BoxConstraints(
+          maxWidth: 700.0,
+        ),
         decoration: BoxDecoration(),
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -123,7 +126,6 @@ class _JourneyComponentWidgetState extends State<JourneyComponentWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(22.0, 0.0, 0.0, 0.0),
                       child: Container(
-                        height: 150.0,
                         decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -140,13 +142,17 @@ class _JourneyComponentWidgetState extends State<JourneyComponentWidget> {
                             ),
                             Container(
                               decoration: BoxDecoration(),
-                              child: wrapWithModel(
-                                model: _model.listTileModel2,
-                                updateCallback: () => setState(() {}),
-                                child: ListTileWidget(
-                                  title: widget.title2,
-                                  body: widget.body2,
-                                  date: widget.date2,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 16.0, 0.0, 16.0),
+                                child: wrapWithModel(
+                                  model: _model.listTileModel2,
+                                  updateCallback: () => setState(() {}),
+                                  child: ListTileWidget(
+                                    title: widget.title2,
+                                    body: widget.body2,
+                                    date: widget.date2,
+                                  ),
                                 ),
                               ),
                             ),

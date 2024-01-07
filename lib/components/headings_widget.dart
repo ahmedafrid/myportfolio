@@ -60,8 +60,10 @@ class _HeadingsWidgetState extends State<HeadingsWidget> {
               'My',
             ),
             style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Nunito Sans',
+                  fontFamily: FlutterFlowTheme.of(context).titleLargeFamily,
                   color: FlutterFlowTheme.of(context).primary,
+                  useGoogleFonts: GoogleFonts.asMap().containsKey(
+                      FlutterFlowTheme.of(context).titleLargeFamily),
                 ),
           ),
           TextSpan(

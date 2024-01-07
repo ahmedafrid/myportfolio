@@ -7,10 +7,12 @@ import '/components/social_icon_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'main_page_content_widget.dart' show MainPageContentWidget;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +25,10 @@ import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class MainPageContentModel extends FlutterFlowModel<MainPageContentWidget> {
+  ///  Local state fields for this component.
+
+  int sliderIndex = 0;
+
   ///  State fields for stateful widgets in this component.
 
   // Model for navbar component.

@@ -8,7 +8,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 const kThemeModeKey = '__theme_mode__';
 SharedPreferences? _prefs;
 
+enum DeviceSize {
+  mobile,
+  tablet,
+  desktop,
+}
+
 abstract class FlutterFlowTheme {
+  static DeviceSize deviceSize = DeviceSize.mobile;
+
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
   static ThemeMode get themeMode {
@@ -25,6 +33,7 @@ abstract class FlutterFlowTheme {
       : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
   static FlutterFlowTheme of(BuildContext context) {
+    deviceSize = getDeviceSize(context);
     return Theme.of(context).brightness == Brightness.dark
         ? DarkModeTheme()
         : LightModeTheme();
@@ -114,7 +123,22 @@ abstract class FlutterFlowTheme {
   String get bodySmallFamily => typography.bodySmallFamily;
   TextStyle get bodySmall => typography.bodySmall;
 
-  Typography get typography => ThemeTypography(this);
+  Typography get typography => {
+        DeviceSize.mobile: MobileTypography(this),
+        DeviceSize.tablet: TabletTypography(this),
+        DeviceSize.desktop: DesktopTypography(this),
+      }[deviceSize]!;
+}
+
+DeviceSize getDeviceSize(BuildContext context) {
+  final width = MediaQuery.sizeOf(context).width;
+  if (width < 479) {
+    return DeviceSize.mobile;
+  } else if (width < 991) {
+    return DeviceSize.tablet;
+  } else {
+    return DeviceSize.desktop;
+  }
 }
 
 class LightModeTheme extends FlutterFlowTheme {
@@ -176,8 +200,8 @@ abstract class Typography {
   TextStyle get bodySmall;
 }
 
-class ThemeTypography extends Typography {
-  ThemeTypography(this.theme);
+class MobileTypography extends Typography {
+  MobileTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
@@ -283,6 +307,226 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
+      );
+}
+
+class TabletTypography extends Typography {
+  TabletTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get displayLargeFamily => 'Nunito Sans';
+  TextStyle get displayLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+      );
+  String get displayMediumFamily => 'Nunito Sans';
+  TextStyle get displayMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+      );
+  String get displaySmallFamily => 'Nunito Sans';
+  TextStyle get displaySmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 10.0,
+      );
+  String get headlineLargeFamily => 'Nunito Sans';
+  TextStyle get headlineLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 26.0,
+      );
+  String get headlineMediumFamily => 'Nunito Sans';
+  TextStyle get headlineMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 24.0,
+      );
+  String get headlineSmallFamily => 'Nunito Sans';
+  TextStyle get headlineSmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 24.0,
+      );
+  String get titleLargeFamily => 'Nunito Sans';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 22.0,
+      );
+  String get titleMediumFamily => 'Nunito Sans';
+  TextStyle get titleMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 18.0,
+      );
+  String get titleSmallFamily => 'Nunito Sans';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 22.0,
+      );
+  String get labelLargeFamily => 'Nunito Sans';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 16.0,
+      );
+  String get labelMediumFamily => 'Nunito Sans';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 14.0,
+      );
+  String get labelSmallFamily => 'Nunito Sans';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 12.0,
+      );
+  String get bodyLargeFamily => 'Nunito Sans';
+  TextStyle get bodyLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 14.0,
+      );
+  String get bodyMediumFamily => 'Nunito Sans';
+  TextStyle get bodyMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 14.0,
+      );
+  String get bodySmallFamily => 'Nunito Sans';
+  TextStyle get bodySmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 12.0,
+      );
+}
+
+class DesktopTypography extends Typography {
+  DesktopTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get displayLargeFamily => 'Nunito Sans';
+  TextStyle get displayLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+      );
+  String get displayMediumFamily => 'Nunito Sans';
+  TextStyle get displayMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+      );
+  String get displaySmallFamily => 'Nunito Sans';
+  TextStyle get displaySmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 20.0,
+      );
+  String get headlineLargeFamily => 'Nunito Sans';
+  TextStyle get headlineLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 36.0,
+      );
+  String get headlineMediumFamily => 'Nunito Sans';
+  TextStyle get headlineMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 34.0,
+      );
+  String get headlineSmallFamily => 'Nunito Sans';
+  TextStyle get headlineSmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 34.0,
+      );
+  String get titleLargeFamily => 'Nunito Sans';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 32.0,
+      );
+  String get titleMediumFamily => 'Nunito Sans';
+  TextStyle get titleMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 28.0,
+      );
+  String get titleSmallFamily => 'Nunito Sans';
+  TextStyle get titleSmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 32.0,
+      );
+  String get labelLargeFamily => 'Nunito Sans';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 26.0,
+      );
+  String get labelMediumFamily => 'Nunito Sans';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 24.0,
+      );
+  String get labelSmallFamily => 'Nunito Sans';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 22.0,
+      );
+  String get bodyLargeFamily => 'Nunito Sans';
+  TextStyle get bodyLarge => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 24.0,
+      );
+  String get bodyMediumFamily => 'Nunito Sans';
+  TextStyle get bodyMedium => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w300,
+        fontSize: 24.0,
+      );
+  String get bodySmallFamily => 'Nunito Sans';
+  TextStyle get bodySmall => GoogleFonts.getFont(
+        'Nunito Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 22.0,
       );
 }
 

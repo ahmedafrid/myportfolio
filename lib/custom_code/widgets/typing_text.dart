@@ -31,15 +31,14 @@ class _TypingTextState extends State<TypingText> {
   Widget build(BuildContext context) {
     return Typewriter(
       // ['Flutter', 'FlutterFlow', 'React'],
-      ['Frontend Developer_'],
+      ['Frontend Developer', 'FlutterFlow Expert', 'UI/UX Designer'],
 
-      loop: false,
+      loop: true,
       erase: true,
       textstyle: TextStyle(
           color: const Color.fromARGB(255, 255, 255, 255),
           fontSize: 22,
           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily),
-
       tailingtext: '_',
     );
   }

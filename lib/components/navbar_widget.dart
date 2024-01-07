@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'navbar_model.dart';
 export 'navbar_model.dart';
@@ -49,7 +50,7 @@ class _NavbarWidgetState extends State<NavbarWidget> {
 
     return Container(
       width: double.infinity,
-      height: MediaQuery.sizeOf(context).height * 0.05,
+      height: MediaQuery.sizeOf(context).height * 0.06,
       decoration: BoxDecoration(),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
@@ -57,19 +58,12 @@ class _NavbarWidgetState extends State<NavbarWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                await widget.action?.call();
-              },
-              child: Icon(
-                Icons.menu,
-                color: FlutterFlowTheme.of(context).secondaryText,
-                size: 24.0,
-              ),
+            Lottie.asset(
+              'assets/lottie_animations/Animation_-_1704623834575.json',
+              width: 50.0,
+              height: MediaQuery.sizeOf(context).height * 0.5,
+              fit: BoxFit.cover,
+              animate: true,
             ),
             if (!(Theme.of(context).brightness == Brightness.dark))
               InkWell(

@@ -61,23 +61,20 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (responsiveVisibility(
-                context: context,
-                tabletLandscape: false,
-                desktop: false,
-              ))
-                Container(
+              Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
+                child: custom_widgets.ScrollListener(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
-                  child: custom_widgets.ScrollListener(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
-                  ),
                 ),
+              ),
               if (responsiveVisibility(
                 context: context,
                 phone: false,
                 tablet: false,
+                tabletLandscape: false,
+                desktop: false,
               ))
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -94,11 +91,15 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                         ' This page is optimized for mobile viewing. For the best experience, please open it on your mobile device. Thank you! 🚀',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Nunito Sans',
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).titleSmallFamily,
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                               fontSize: 38.0,
                               fontWeight: FontWeight.w600,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .titleSmallFamily),
                             ),
                         colors: [
                           FlutterFlowTheme.of(context).primary,
