@@ -33,11 +33,12 @@ class _TypingTextState extends State<TypingText> {
       // ['Flutter', 'FlutterFlow', 'React'],
       ['Frontend Developer', 'FlutterFlow Expert', 'UI/UX Designer'],
 
-      loop: true,
+      loop: false,
       erase: true,
       textstyle: TextStyle(
           color: const Color.fromARGB(255, 255, 255, 255),
           fontSize: 22,
+          fontWeight: FontWeight.normal,
           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily),
       tailingtext: '_',
     );
