@@ -72,12 +72,16 @@ class _SocialIconWidgetState extends State<SocialIconWidget> {
       ),
       onEnter: ((event) async {
         setState(() => _model.mouseRegionHovered = true);
+        logFirebaseEvent('SOCIAL_ICON_MouseRegion_0qskp9l2_ON_TOGG');
+        logFirebaseEvent('MouseRegion_update_component_state');
         setState(() {
           _model.isHovered = true;
         });
       }),
       onExit: ((event) async {
         setState(() => _model.mouseRegionHovered = false);
+        logFirebaseEvent('SOCIAL_ICON_MouseRegion_0qskp9l2_ON_TOGG');
+        logFirebaseEvent('MouseRegion_update_component_state');
         setState(() {
           _model.isHovered = false;
         });

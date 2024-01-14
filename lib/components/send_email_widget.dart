@@ -143,6 +143,9 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                     size: 22.0,
                                   ),
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'SEND_EMAIL_COMP_close_rounded_ICN_ON_TAP');
+                                    logFirebaseEvent('IconButton_bottom_sheet');
                                     Navigator.pop(context);
                                   },
                                 ),
@@ -387,6 +390,10 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                                     ''))
                                         ? null
                                         : () async {
+                                            logFirebaseEvent(
+                                                'SEND_EMAIL_COMP_SEND_BTN_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Button_send_email');
                                             await launchUrl(Uri(
                                                 scheme: 'mailto',
                                                 path:
@@ -404,6 +411,24 @@ class _SendEmailWidgetState extends State<SendEmailWidget> {
                                                             e) =>
                                                         '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
                                                     .join('&')));
+                                            logFirebaseEvent(
+                                                'Button_show_snack_bar');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Email sent succefully',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                            );
                                           },
                                     text: 'Send ',
                                     options: FFButtonOptions(

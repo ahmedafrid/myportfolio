@@ -5,6 +5,7 @@ import '/components/navbar_widget.dart';
 import '/components/send_email_widget.dart';
 import '/components/social_icon_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -28,6 +29,8 @@ class MainPageContentModel extends FlutterFlowModel<MainPageContentWidget> {
   ///  Local state fields for this component.
 
   int sliderIndex = 0;
+
+  bool feedback = true;
 
   ///  State fields for stateful widgets in this component.
 
@@ -58,9 +61,17 @@ class MainPageContentModel extends FlutterFlowModel<MainPageContentWidget> {
   // Model for socialIcon component.
   late SocialIconModel socialIconModel4;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  FocusNode? textFieldFocusNode1;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  FeedbackMessagesRecord? messagesaved;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
+  // Stores action output result for [Backend Call - Create Document] action in IconButton widget.
+  FeedbackMessagesRecord? nameSaved;
 
   /// Initialization and disposal methods.
 
@@ -88,8 +99,11 @@ class MainPageContentModel extends FlutterFlowModel<MainPageContentWidget> {
     socialIconModel2.dispose();
     socialIconModel3.dispose();
     socialIconModel4.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    textFieldFocusNode1?.dispose();
+    textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController2?.dispose();
   }
 
   /// Action blocks are added here.

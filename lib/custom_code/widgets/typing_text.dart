@@ -16,11 +16,13 @@ class TypingText extends StatefulWidget {
     this.width,
     this.height,
     required this.text,
+    required this.color,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final String text;
+  final Color color;
 
   @override
   _TypingTextState createState() => _TypingTextState();
@@ -36,7 +38,7 @@ class _TypingTextState extends State<TypingText> {
       loop: false,
       erase: true,
       textstyle: TextStyle(
-          color: const Color.fromARGB(255, 255, 255, 255),
+          color: widget.color,
           fontSize: 22,
           fontWeight: FontWeight.normal,
           fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily),

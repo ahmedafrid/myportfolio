@@ -72,6 +72,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('NAVBAR_COMP_Transform_cru77s0b_ON_TAP');
+                  logFirebaseEvent('Transform_set_dark_mode_settings');
                   setDarkModeSetting(context, ThemeMode.dark);
                 },
                 child: Transform.rotate(
@@ -90,6 +92,8 @@ class _NavbarWidgetState extends State<NavbarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('NAVBAR_COMP_Icon_isxaj8lp_ON_TAP');
+                  logFirebaseEvent('Icon_set_dark_mode_settings');
                   setDarkModeSetting(context, ThemeMode.light);
                 },
                 child: Icon(

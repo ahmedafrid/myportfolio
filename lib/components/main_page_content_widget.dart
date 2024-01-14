@@ -5,6 +5,7 @@ import '/components/navbar_widget.dart';
 import '/components/send_email_widget.dart';
 import '/components/social_icon_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -101,19 +102,26 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('MAIN_CONTENT_mainPageContent_ON_INIT_STA');
+      logFirebaseEvent('mainPageContent_set_dark_mode_settings');
       setDarkModeSetting(context, ThemeMode.dark);
       while (_model.sliderIndex <= 2) {
+        logFirebaseEvent('mainPageContent_update_component_state');
         setState(() {
           _model.sliderIndex = _model.sliderIndex + 1;
         });
       }
+      logFirebaseEvent('mainPageContent_update_component_state');
       setState(() {
         _model.sliderIndex = 0;
       });
     });
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -161,6 +169,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                         updateCallback: () => setState(() {}),
                         child: NavbarWidget(
                           action: () async {
+                            logFirebaseEvent(
+                                'MAIN_CONTENT_Container_hrxmxiph_CALLBACK');
+                            logFirebaseEvent('navbar_haptic_feedback');
                             HapticFeedback.selectionClick();
                           },
                         ),
@@ -575,6 +586,8 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                             width: 200.0,
                                             height: 30.0,
                                             text: 'text',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                           ),
                                         ),
                                         if (responsiveVisibility(
@@ -1085,7 +1098,7 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                             size: 16.0,
                           ),
                           title: 'Education',
-                          design: 1,
+                          design: 2,
                           title1: 'Bachelor of Engineering in Computer Science',
                           date1: '2018 - 2022',
                           title2: 'Pre University Course',
@@ -1464,7 +1477,6 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                     ),
                                     Container(
                                       width: double.infinity,
-                                      height: 170.0,
                                       decoration: BoxDecoration(
                                         color: Color(0x67090918),
                                         borderRadius:
@@ -1573,6 +1585,10 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'MAIN_CONTENT_Container_qz30ibzk_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Container_launch_u_r_l');
                                         await launchURL(
                                             'https://beingmangalorean.com');
                                       },
@@ -1704,7 +1720,8 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                           fontFamily:
                                               FlutterFlowTheme.of(context)
                                                   .bodySmallFamily,
-                                          color: Color(0xCDFFFFFF),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(
                                                   FlutterFlowTheme.of(context)
@@ -1881,6 +1898,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                       0.0, 32.0, 0.0, 16.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'MAIN_CONTENT_OPEN_IN_FLUTTER_FLOW_BTN_ON');
+                                      logFirebaseEvent('Button_launch_u_r_l');
                                       await launchURL(
                                           'https://wrapped2023.flutterflow.app/c27dc3e22dedb2d6642202b604483371cafa4d7a ');
                                     },
@@ -1917,6 +1937,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'MAIN_CONTENT_Image_72jc50vo_ON_TAP');
+                                      logFirebaseEvent('Image_launch_u_r_l');
                                       await launchURL(
                                           'https://wrapped2023.flutterflow.app/c27dc3e22dedb2d6642202b604483371cafa4d7a ');
                                     },
@@ -2072,6 +2095,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'MAIN_CONTENT_Container_y89oz7h2_ON_TAP');
+                                  logFirebaseEvent('socialIcon_bottom_sheet');
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -2104,6 +2130,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'MAIN_CONTENT_Container_jzb5mn5m_ON_TAP');
+                                  logFirebaseEvent('socialIcon_launch_u_r_l');
                                   await launchURL(
                                       'https://in.linkedin.com/in/ahmed-afrid-3433841a4');
                                 },
@@ -2125,6 +2154,9 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'MAIN_CONTENT_Container_yeotphrx_ON_TAP');
+                                  logFirebaseEvent('socialIcon_launch_u_r_l');
                                   await launchURL(
                                       'https://github.com/ahmedafrid');
                                 },
@@ -2155,101 +2187,289 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                           ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                        child: Container(
-                          width: 250.0,
-                          child: TextFormField(
-                            controller: _model.textController,
-                            focusNode: _model.textFieldFocusNode,
-                            onFieldSubmitted: (_) async {
-                              await FeedbackMessagesRecord.collection
-                                  .doc()
-                                  .set(createFeedbackMessagesRecordData(
-                                    message: _model.textController.text,
-                                  ));
-                            },
-                            textInputAction: TextInputAction.send,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              isDense: true,
-                              labelText: 'Write a feedback...',
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelMediumFamily,
-                                    color: Color(0xFF090918),
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .labelMediumFamily),
-                                  ),
-                              hintStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .labelMediumFamily,
-                                    color: Color(0xFF090918),
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .labelMediumFamily),
-                                  ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0x80090918),
-                                  width: 0.5,
-                                ),
-                                borderRadius: BorderRadius.circular(6.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 0.5,
-                                ),
-                                borderRadius: BorderRadius.circular(6.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 0.5,
-                                ),
-                                borderRadius: BorderRadius.circular(6.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 0.5,
-                                ),
-                                borderRadius: BorderRadius.circular(6.0),
-                              ),
-                              suffixIcon: Icon(
-                                Icons.send,
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                      if (_model.feedback)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 30.0, 0.0, 0.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
                               ),
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color: Color(0xFF090918),
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                            validator: _model.textControllerValidator
-                                .asValidator(context),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp('[a-zA-Z0-9]'))
-                            ],
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 0.0),
+                                    child: Container(
+                                      width: 250.0,
+                                      child: TextFormField(
+                                        controller: _model.textController1,
+                                        focusNode: _model.textFieldFocusNode1,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          labelText: 'Write a feedback...',
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                color: Color(0xFF090918),
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                color: Color(0xFF090918),
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Color(0xFF090918),
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                        validator: _model
+                                            .textController1Validator
+                                            .asValidator(context),
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.allow(
+                                              RegExp('[a-zA-Z ]'))
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  FlutterFlowIconButton(
+                                    borderRadius: 20.0,
+                                    buttonSize: 40.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).accent1,
+                                    icon: Icon(
+                                      Icons.send,
+                                      color: Colors.black,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'MAIN_PAGE_CONTENT_COMP_send_ICN_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_backend_call');
+
+                                      var feedbackMessagesRecordReference =
+                                          FeedbackMessagesRecord.collection
+                                              .doc();
+                                      await feedbackMessagesRecordReference
+                                          .set(createFeedbackMessagesRecordData(
+                                        message: _model.textController1.text,
+                                      ));
+                                      _model.messagesaved = FeedbackMessagesRecord
+                                          .getDocumentFromData(
+                                              createFeedbackMessagesRecordData(
+                                                message:
+                                                    _model.textController1.text,
+                                              ),
+                                              feedbackMessagesRecordReference);
+                                      logFirebaseEvent(
+                                          'IconButton_update_component_state');
+                                      setState(() {
+                                        _model.feedback = false;
+                                      });
+
+                                      setState(() {});
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      if (!_model.feedback)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 30.0, 0.0, 0.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 0.0),
+                                    child: Container(
+                                      width: 250.0,
+                                      child: TextFormField(
+                                        controller: _model.textController2,
+                                        focusNode: _model.textFieldFocusNode2,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          isDense: true,
+                                          labelText: 'Your Name/Email',
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                color: Color(0xFF090918),
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMediumFamily,
+                                                color: Color(0xFF090918),
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMediumFamily),
+                                              ),
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Color(0xFF090918),
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                        validator: _model
+                                            .textController2Validator
+                                            .asValidator(context),
+                                        inputFormatters: [
+                                          FilteringTextInputFormatter.allow(
+                                              RegExp('[a-zA-Z ]'))
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  FlutterFlowIconButton(
+                                    borderColor: Colors.transparent,
+                                    borderRadius: 20.0,
+                                    buttonSize: 40.0,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).accent1,
+                                    icon: Icon(
+                                      Icons.send,
+                                      color: Colors.black,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'MAIN_PAGE_CONTENT_COMP_send_ICN_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_backend_call');
+
+                                      var feedbackMessagesRecordReference =
+                                          FeedbackMessagesRecord.collection
+                                              .doc();
+                                      await feedbackMessagesRecordReference
+                                          .set(createFeedbackMessagesRecordData(
+                                        name: _model.textController2.text,
+                                      ));
+                                      _model.nameSaved = FeedbackMessagesRecord
+                                          .getDocumentFromData(
+                                              createFeedbackMessagesRecordData(
+                                                name:
+                                                    _model.textController2.text,
+                                              ),
+                                              feedbackMessagesRecordReference);
+                                      logFirebaseEvent(
+                                          'IconButton_show_snack_bar');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Thanks for your Feedback!',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                        ),
+                                      );
+                                      logFirebaseEvent(
+                                          'IconButton_update_component_state');
+                                      setState(() {
+                                        _model.feedback = true;
+                                      });
+
+                                      setState(() {});
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 72.0, 0.0, 0.0),

@@ -27,6 +27,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
     super.initState();
     _model = createModel(context, () => LandingPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'landingPage'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 

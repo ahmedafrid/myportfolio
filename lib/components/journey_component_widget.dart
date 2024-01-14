@@ -75,18 +75,19 @@ class _JourneyComponentWidgetState extends State<JourneyComponentWidget> {
       child: Container(
         width: double.infinity,
         constraints: BoxConstraints(
+          minHeight: 200.0,
           maxWidth: 700.0,
         ),
         decoration: BoxDecoration(),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 widget.icon!,
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Text(
                     valueOrDefault<String>(
                       widget.title,
@@ -98,7 +99,7 @@ class _JourneyComponentWidgetState extends State<JourneyComponentWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(7.0, 16.0, 12.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
