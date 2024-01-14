@@ -26,9 +26,15 @@ class FeedbackMessagesRecord extends FirestoreRecord {
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "time" field.
+  DateTime? _time;
+  DateTime? get time => _time;
+  bool hasTime() => _time != null;
+
   void _initializeFields() {
     _message = snapshotData['message'] as String?;
     _name = snapshotData['name'] as String?;
+    _time = snapshotData['time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -69,11 +75,13 @@ class FeedbackMessagesRecord extends FirestoreRecord {
 Map<String, dynamic> createFeedbackMessagesRecordData({
   String? message,
   String? name,
+  DateTime? time,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'message': message,
       'name': name,
+      'time': time,
     }.withoutNulls,
   );
 
@@ -86,12 +94,14 @@ class FeedbackMessagesRecordDocumentEquality
 
   @override
   bool equals(FeedbackMessagesRecord? e1, FeedbackMessagesRecord? e2) {
-    return e1?.message == e2?.message && e1?.name == e2?.name;
+    return e1?.message == e2?.message &&
+        e1?.name == e2?.name &&
+        e1?.time == e2?.time;
   }
 
   @override
   int hash(FeedbackMessagesRecord? e) =>
-      const ListEquality().hash([e?.message, e?.name]);
+      const ListEquality().hash([e?.message, e?.name, e?.time]);
 
   @override
   bool isValidKey(Object? o) => o is FeedbackMessagesRecord;

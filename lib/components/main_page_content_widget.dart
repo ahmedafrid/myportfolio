@@ -522,32 +522,36 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
-                                      child: GradientText(
-                                        'Hi, I’m Afrid',
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineLargeFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLargeFamily),
-                                            ),
-                                        colors: [
-                                          FlutterFlowTheme.of(context).primary,
-                                          FlutterFlowTheme.of(context)
-                                              .primaryText
-                                        ],
-                                        gradientDirection:
-                                            GradientDirection.ltr,
-                                        gradientType: GradientType.linear,
+                                      child: Semantics(
+                                        label:
+                                            'Ahmed Afrid Experienced FlutterFlow Developer ',
+                                        child: GradientText(
+                                          'Hi, I’m Afrid',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLargeFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(FlutterFlowTheme
+                                                            .of(context)
+                                                        .headlineLargeFamily),
+                                              ),
+                                          colors: [
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText
+                                          ],
+                                          gradientDirection:
+                                              GradientDirection.ltr,
+                                          gradientType: GradientType.linear,
+                                        ),
                                       ).animateOnPageLoad(animationsMap[
                                           'textOnPageLoadAnimation1']!),
                                     ),
@@ -631,11 +635,14 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 16.0, 0.0),
-                                  child: Text(
-                                    'Passionate frontend developer skilled in crafting scalable applications and websites using cutting-edge technologies. From conceptualizing and prototyping to coding and deployment.',
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  child: Semantics(
+                                    label: 'Enterprise FlutterFlow Expert',
+                                    child: Text(
+                                      'Passionate frontend developer skilled in crafting scalable applications and websites using cutting-edge technologies. From conceptualizing and prototyping to coding and deployment.',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
                                   ).animateOnPageLoad(animationsMap[
                                       'textOnPageLoadAnimation2']!),
                                 ),
@@ -2289,29 +2296,10 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                       logFirebaseEvent(
                                           'MAIN_PAGE_CONTENT_COMP_send_ICN_ON_TAP');
                                       logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      var feedbackMessagesRecordReference =
-                                          FeedbackMessagesRecord.collection
-                                              .doc();
-                                      await feedbackMessagesRecordReference
-                                          .set(createFeedbackMessagesRecordData(
-                                        message: _model.textController1.text,
-                                      ));
-                                      _model.messagesaved = FeedbackMessagesRecord
-                                          .getDocumentFromData(
-                                              createFeedbackMessagesRecordData(
-                                                message:
-                                                    _model.textController1.text,
-                                              ),
-                                              feedbackMessagesRecordReference);
-                                      logFirebaseEvent(
                                           'IconButton_update_component_state');
                                       setState(() {
                                         _model.feedback = false;
                                       });
-
-                                      setState(() {});
                                     },
                                   ),
                                 ],
@@ -2429,13 +2417,23 @@ class _MainPageContentWidgetState extends State<MainPageContentWidget>
                                               .doc();
                                       await feedbackMessagesRecordReference
                                           .set(createFeedbackMessagesRecordData(
-                                        name: _model.textController2.text,
+                                        name: valueOrDefault<String>(
+                                          _model.textController2.text,
+                                          'not specified',
+                                        ),
+                                        message: _model.textController1.text,
+                                        time: getCurrentTimestamp,
                                       ));
                                       _model.nameSaved = FeedbackMessagesRecord
                                           .getDocumentFromData(
                                               createFeedbackMessagesRecordData(
-                                                name:
-                                                    _model.textController2.text,
+                                                name: valueOrDefault<String>(
+                                                  _model.textController2.text,
+                                                  'not specified',
+                                                ),
+                                                message:
+                                                    _model.textController1.text,
+                                                time: getCurrentTimestamp,
                                               ),
                                               feedbackMessagesRecordReference);
                                       logFirebaseEvent(
