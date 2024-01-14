@@ -1,2 +1,2 @@
 # myportfolio
-This is source code of my portfolio flutter web build using flutterflow
+This is my portfolio flutter web app build to deploy using github pages
